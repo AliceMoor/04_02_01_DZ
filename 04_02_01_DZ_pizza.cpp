@@ -52,9 +52,10 @@ int main()
 	int count_201=0;
 	int count_202=0;
 	int count_203=0;
-
+	int count_sale = 0;
+	
 	double revenue = 0;
-
+	double pizza_sale = 0;
 	double sale_5 = 0;
 	double sale_20 = 0;
 	double sale_15 = 0;
@@ -213,11 +214,17 @@ int main()
 					cout << "**************************************************************************************************************************************\n";
 					//cout << "Итого - " << sum << endl;
 
+					count_pizza = count_101 + count_102 + count_103 + count_104; //cout << "count_pizza " << count_pizza << endl;
+
 					if (sum < 5000)
 					{
-						if( (count_101 + count_102 + count_103 + count_104)>=5)
+		
+						if( count_pizza >= 5)
 						{
-							sale_5 = (sum_101 + sum_102 + sum_103 + sum_104) / 5;
+							count_pizza = count_101 + count_102 + count_103 + count_104; //cout << "count_pizza " << count_pizza << endl;
+							count_sale = count_pizza / 5; //cout << "count_sale " << count_sale << endl;
+							pizza_sale = count_pizza * count_sale; //cout << "pizza_sale " << pizza_sale << endl;
+							sale_5 = ((sum_101 + sum_102 + sum_103 + sum_104) / count_pizza) * count_sale; //cout << "sale_5 " << count_pizza << endl;
 							sum_pizza = sum_101 + sum_102 + sum_103 + sum_104 - sale_5; //cout << "Стоимость пицц с 5-й бесплатной - " << sum_pizza << endl;
 							cout << " * " << "Скидка за каждую 5-ю бесплатную пиццу - " << sale_5 << endl;
 						}
@@ -244,13 +251,16 @@ int main()
 
 					if (sum >= 5000)
 					{
-						if ((count_101 + count_102 + count_103 + count_104) >= 5)
+						if (count_pizza >= 5)
 						{
-							sale_5 = (sum_101 + sum_102 + sum_103 + sum_104) / 5;
-							sale_20 = (sum_101 + sum_102 + sum_103 + sum_104) *0.2;
-							sum_pizza = sum_101 + sum_102 + sum_103 + sum_104 - sale_5 - sale_20; //cout<< "Стоимость пицц с 5-й бесплатной - "  << sum_pizza << endl;
+							count_pizza = count_101 + count_102 + count_103 + count_104; //cout << "count_pizza " << count_pizza << endl;
+							count_sale = count_pizza / 5; //cout << "count_sale " << count_sale << endl;
+							pizza_sale = count_pizza * count_sale; //cout << "pizza_sale " << pizza_sale << endl;
+							sale_5 = ((sum_101 + sum_102 + sum_103 + sum_104) / count_pizza) * count_sale;// cout << "sale_5 " << count_pizza << endl;
+							sale_20 = (sum_101 + sum_102 + sum_103 + sum_104) *0.2; //cout << "sale_20 " << sale_20 << endl;
+							sum_pizza = sum_101 + sum_102 + sum_103 + sum_104 - sale_5 - sale_20;// cout<< "Стоимость пицц с 5-й бесплатной - "  << sum_pizza << endl;
 							cout << " * " << "Скидка за каждую 5-ю бесплатную пиццу - " << sale_5 << endl;
-							cout << " * " << "Скидка за заказ свыше 5000 рублей - " << sale_5 << endl;
+							cout << " * " << "Скидка за заказ свыше 5000 рублей - " << sale_20 << endl;
 						}
 
 						else
